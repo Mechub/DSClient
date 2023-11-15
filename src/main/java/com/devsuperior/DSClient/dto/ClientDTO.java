@@ -6,6 +6,7 @@ import com.devsuperior.DSClient.entities.Client;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -17,12 +18,12 @@ public class ClientDTO {
     @NotBlank(message = "Campo requerido")
     private String name;
 
-    @Size(min = 11, max = 11, message = "O CPF deve ter exatamente 11 caracteres")
+    @Pattern(regexp = "\\d{11}", message = "O CPF deve conter apenas dígitos 11 caracteres numéricos.")
     private String cpf;
 
     @Positive(message = "A renda deve ser positiva")
     private Double income;
-
+    
     @PastOrPresent(message = "A data de nascimento precisa ser válida")
     private LocalDate birthDate;
     
